@@ -1,0 +1,3 @@
+[submodule "Vox/vendor/spdlog"]
+	path = Vox/vendor/spdlog
+	url = https://github.com/gabime/spdlog
