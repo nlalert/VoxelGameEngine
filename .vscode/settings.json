@@ -3,7 +3,7 @@
     "cmake.configureSettings": {
         "CMAKE_BUILD_TYPE": "Debug"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/Vox",
+    "cmake.sourceDirectory": "${workspaceFolder}",
     "cmake.buildDirectory": "${workspaceFolder}/build",
     "files.associations": {
         "array": "cpp",

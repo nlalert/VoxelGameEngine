@@ -1,9 +1,7 @@
 #pragma once
- 
-#include "Vox/Core.h"
 
-#include <string>
-#include <functional>
+#include "voxpch.h"
+#include "Vox/Core.h"
 
 namespace Vox {
 

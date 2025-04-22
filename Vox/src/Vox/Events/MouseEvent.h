@@ -2,8 +2,6 @@
  
 #include "Event.h"
 
-#include <sstream>
-
 namespace Vox {
 
     class VOX_API MouseMovedEvent : public Event

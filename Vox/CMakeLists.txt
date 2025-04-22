@@ -14,7 +14,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Engine source files
 set(SOURCES
     src/Vox/Application.cpp
-    src/Vox/Log.cpp  # Add this line
+    src/Vox/Log.cpp
+    src/voxpch.cpp  # Add precompiled header cpp file
 )
 
 # Internal headers
@@ -22,7 +23,8 @@ set(INTERNAL_HEADERS
     src/Vox/Application.h
     src/Vox/Core.h
     src/Vox/EntryPoint.h
-    src/Vox/Log.h  # Add this line
+    src/Vox/Log.h
+    src/voxpch.h    # Add precompiled header file
 )
 
 # Public API header
@@ -47,14 +49,18 @@ target_include_directories(Vox
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Vox
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/src
-        ${SPDLOG_INCLUDE_DIR}  # Add spdlog includes
+        ${SPDLOG_INCLUDE_DIR}
+)
+
+# Enable precompiled headers
+target_precompile_headers(Vox
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/voxpch.h
 )
 
 # Define export macro for DLL
 target_compile_definitions(Vox 
     PRIVATE 
         VOX_BUILD_DLL
+        VOX_PLATFORM_WINDOWS  # Define platform for precompiled header
 )
-
-# Add the Sandbox subdirectory
-add_subdirectory(../Sandbox ${CMAKE_BINARY_DIR}/Sandbox)

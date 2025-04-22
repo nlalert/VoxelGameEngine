@@ -1,3 +1,4 @@
+#include "voxpch.h"
 #include "Application.h"
 
 #include "Vox/Events/ApplicationEvent.h"

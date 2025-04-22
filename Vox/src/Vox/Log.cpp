@@ -1,3 +1,4 @@
+#include "voxpch.h"
 #include "Log.h"
 
 namespace Vox {
@@ -16,3 +17,4 @@ namespace Vox {
     }
 
 }
+
