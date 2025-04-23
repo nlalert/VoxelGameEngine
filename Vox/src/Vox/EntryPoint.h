@@ -1,8 +1,5 @@
 #pragma once
 
-#include "Core.h"
-#include "Vox.h"
-
 #ifdef VOX_PLATFORM_WINDOWS
 
 extern Vox::Application* Vox::CreateApplication();
