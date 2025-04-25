@@ -7,12 +7,10 @@
 
 namespace Vox {
 
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-
     Application::Application()
     {
         m_Window = std::unique_ptr<Window>(Window::Create());
-        m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+        m_Window->SetEventCallback([this](Event& e) { OnEvent(e); });
     }
     
     Application::~Application()
@@ -22,7 +20,7 @@ namespace Vox {
 	void Application::OnEvent(Event& e)
  	{
  		EventDispatcher dispatcher(e);
- 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+        dispatcher.Dispatch<WindowCloseEvent>([this](WindowCloseEvent& e) { return OnWindowClose(e); });
  
  		VOX_CORE_TRACE("{0}", e.ToString());
  	}
