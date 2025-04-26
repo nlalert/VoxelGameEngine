@@ -27,9 +27,9 @@ add_subdirectory(vendor/GLFW)
 set(SOURCES
     src/Vox/Application.cpp
     src/Vox/Log.cpp
+    src/Vox/Layer.cpp
+    src/Vox/LayerStack.cpp
     src/voxpch.cpp  # Add precompiled header cpp file
-    src/Vox/Window.h  # Add Window interface
-    src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
     src/Platform/Windows/WindowsWindow.cpp  # Add Windows implementation
 )
 
@@ -39,6 +39,14 @@ set(INTERNAL_HEADERS
     src/Vox/Core.h
     src/Vox/EntryPoint.h
     src/Vox/Log.h
+    src/Vox/Layer.h
+    src/Vox/LayerStack.h
+    src/Vox/Window.h  # Add Window interface
+    src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
+    src/Vox/Events/Event.h
+    src/Vox/Events/ApplicationEvent.h
+    src/Vox/Events/KeyEvent.h
+    src/Vox/Events/MouseEvent.h
     src/voxpch.h    # Add precompiled header file
 )
 
