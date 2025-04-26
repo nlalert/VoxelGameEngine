@@ -22,6 +22,11 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 # Add GLFW subdirectory
 add_subdirectory(vendor/GLFW)
 
+# Add GLAD source file
+set(GLAD_SOURCE
+    vendor/GLAD/src/glad.c
+)
+
 # Define source files
 # Engine source files
 set(SOURCES
@@ -31,6 +36,7 @@ set(SOURCES
     src/Vox/LayerStack.cpp
     src/voxpch.cpp  # Add precompiled header cpp file
     src/Platform/Windows/WindowsWindow.cpp  # Add Windows implementation
+    ${GLAD_SOURCE}  # Add GLAD source
 )
 
 # Internal headers
@@ -75,6 +81,7 @@ target_include_directories(Vox
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${SPDLOG_INCLUDE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include  # Add GLAD include
         ${OPENGL_INCLUDE_DIR}
 )
 
@@ -85,11 +92,8 @@ target_link_libraries(Vox
         ${OPENGL_LIBRARIES}
 )
 
-# Enable precompiled headers
-target_precompile_headers(Vox
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/voxpch.h
-)
+# Set specific properties for GLAD source file to not use precompiled header
+set_source_files_properties(${GLAD_SOURCE} PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 
 # Define export macro for DLL
 target_compile_definitions(Vox 
@@ -97,4 +101,11 @@ target_compile_definitions(Vox
         VOX_BUILD_DLL
         VOX_PLATFORM_WINDOWS  # Define platform for precompiled header
         VOX_ENABLE_ASSERTS    # Enable assertions for debug builds
+        GLFW_INCLUDE_NONE     # Tell GLFW not to include OpenGL headers
+)
+
+# Enable precompiled headers
+target_precompile_headers(Vox
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/voxpch.h
 )
