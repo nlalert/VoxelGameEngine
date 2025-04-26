@@ -4,3 +4,6 @@
 [submodule "Vox/vendor/GLFW"]
 	path = Vox/vendor/GLFW
 	url = https://github.com/glfw/glfw
+[submodule "Vox/vendor/imgui"]
+	path = Vox/vendor/imgui
+	url = https://github.com/nlalert/imgui

@@ -26,6 +26,7 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
+        PushOverlay(new Vox::ImGuiLayer());
     }
 
     ~Sandbox()

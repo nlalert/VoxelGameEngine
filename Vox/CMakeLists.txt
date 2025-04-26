@@ -19,8 +19,9 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
-# Add GLFW subdirectory
+# Add subdirectories for dependencies
 add_subdirectory(vendor/GLFW)
+add_subdirectory(vendor/imgui) # Add ImGui subdirectory
 
 # Add GLAD source file
 set(GLAD_SOURCE
@@ -36,6 +37,8 @@ set(SOURCES
     src/Vox/LayerStack.cpp
     src/voxpch.cpp  # Add precompiled header cpp file
     src/Platform/Windows/WindowsWindow.cpp  # Add Windows implementation
+    src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp  # Add ImGui OpenGL renderer
+    src/Vox/ImGui/ImGuiLayer.cpp  # Add ImGui layer
     ${GLAD_SOURCE}  # Add GLAD source
 )
 
@@ -49,6 +52,8 @@ set(INTERNAL_HEADERS
     src/Vox/LayerStack.h
     src/Vox/Window.h  # Add Window interface
     src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
+    src/Platform/OpenGL/ImGuiOpenGLRenderer.h  # Add ImGui OpenGL renderer
+    src/Vox/ImGui/ImGuiLayer.h  # Add ImGui layer
     src/Vox/Events/Event.h
     src/Vox/Events/ApplicationEvent.h
     src/Vox/Events/KeyEvent.h
@@ -81,14 +86,16 @@ target_include_directories(Vox
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${SPDLOG_INCLUDE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include  # Add GLAD include
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
         ${OPENGL_INCLUDE_DIR}
 )
 
-# Link with GLFW and OpenGL
+# Link with GLFW, ImGui, and OpenGL
 target_link_libraries(Vox 
     PRIVATE 
         glfw
+        ImGui
         ${OPENGL_LIBRARIES}
 )
 
@@ -99,9 +106,9 @@ set_source_files_properties(${GLAD_SOURCE} PROPERTIES SKIP_PRECOMPILE_HEADERS ON
 target_compile_definitions(Vox 
     PRIVATE 
         VOX_BUILD_DLL
-        VOX_PLATFORM_WINDOWS  # Define platform for precompiled header
-        VOX_ENABLE_ASSERTS    # Enable assertions for debug builds
-        GLFW_INCLUDE_NONE     # Tell GLFW not to include OpenGL headers
+        VOX_PLATFORM_WINDOWS
+        VOX_ENABLE_ASSERTS
+        GLFW_INCLUDE_NONE
 )
 
 # Enable precompiled headers

@@ -6,6 +6,8 @@
 #include "Vox/Layer.h"
 #include "Vox/Log.h"
 
+#include "Vox/ImGui/ImGuiLayer.h"
+
 // ------Entry Point----------
 #include "Vox/EntryPoint.h"
 // ---------------------------
