@@ -109,7 +109,7 @@ target_compile_definitions(Vox
     PRIVATE 
         VOX_BUILD_DLL
         VOX_PLATFORM_WINDOWS
-        VOX_ENABLE_ASSERTS
+        VOX_DEBUG
         GLFW_INCLUDE_NONE
 )
 

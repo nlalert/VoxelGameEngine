@@ -15,6 +15,10 @@
     #error Vox only supports Windows!
 #endif
 
+#ifdef VOX_DEBUG
+    #define VOX_ENABLE_ASSERTS
+#endif
+
 #ifdef VOX_ENABLE_ASSERTS
  	#define VOX_ASSERT(x, ...) { if(!(x)) { VOX_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
  	#define VOX_CORE_ASSERT(x, ...) { if(!(x)) { VOX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
