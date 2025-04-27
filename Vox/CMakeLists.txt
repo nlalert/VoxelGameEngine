@@ -38,6 +38,7 @@ set(SOURCES
     src/voxpch.cpp  # Add precompiled header cpp file
     src/Platform/Windows/WindowsWindow.cpp  # Add Windows implementation
     src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp  # Add ImGui OpenGL renderer
+    src/Platform/OpenGL/ImGuiGLFWRenderer.cpp  # Add ImGui GLFW renderer
     src/Vox/ImGui/ImGuiLayer.cpp  # Add ImGui layer
     ${GLAD_SOURCE}  # Add GLAD source
 )
@@ -53,6 +54,7 @@ set(INTERNAL_HEADERS
     src/Vox/Window.h  # Add Window interface
     src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
     src/Platform/OpenGL/ImGuiOpenGLRenderer.h  # Add ImGui OpenGL renderer
+    src/Platform/OpenGL/ImGuiGLFWRenderer.h  # Add ImGui GLFW renderer
     src/Vox/ImGui/ImGuiLayer.h  # Add ImGui layer
     src/Vox/Events/Event.h
     src/Vox/Events/ApplicationEvent.h
