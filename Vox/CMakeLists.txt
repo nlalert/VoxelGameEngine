@@ -37,6 +37,7 @@ set(SOURCES
     src/Vox/LayerStack.cpp
     src/voxpch.cpp  # Add precompiled header cpp file
     src/Platform/Windows/WindowsWindow.cpp  # Add Windows implementation
+    src/Platform/Windows/WindowsInput.cpp
     src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp  # Add ImGui OpenGL renderer
     src/Platform/OpenGL/ImGuiGLFWRenderer.cpp  # Add ImGui GLFW renderer
     src/Vox/ImGui/ImGuiLayer.cpp  # Add ImGui layer
@@ -48,11 +49,13 @@ set(INTERNAL_HEADERS
     src/Vox/Application.h
     src/Vox/Core.h
     src/Vox/EntryPoint.h
+    src/Vox/Input.h
     src/Vox/Log.h
     src/Vox/Layer.h
     src/Vox/LayerStack.h
     src/Vox/Window.h  # Add Window interface
     src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
+    src/Platform/Windows//WindowsInput.h
     src/Platform/OpenGL/ImGuiOpenGLRenderer.h  # Add ImGui OpenGL renderer
     src/Platform/OpenGL/ImGuiGLFWRenderer.h  # Add ImGui GLFW renderer
     src/Vox/ImGui/ImGuiLayer.h  # Add ImGui layer
