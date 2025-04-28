@@ -82,7 +82,15 @@ if(NOT EXISTS ${SPDLOG_INCLUDE_DIR})
     message(FATAL_ERROR "spdlog include directory not found: ${SPDLOG_INCLUDE_DIR}")
 endif()
 
-# Update include directories for Voxera
+# Add GLM include directory
+set(GLM_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm")
+
+# Verify that the directory exists
+if(NOT EXISTS ${GLM_INCLUDE_DIR})
+    message(FATAL_ERROR "GLM include directory not found: ${GLM_INCLUDE_DIR}")
+endif()
+
+# Update the target_include_directories to include GLM
 target_include_directories(Voxera
     PRIVATE 
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Voxera
@@ -93,6 +101,7 @@ target_include_directories(Voxera
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
+        ${GLM_INCLUDE_DIR}  # Add GLM include directory
         ${OPENGL_INCLUDE_DIR}
 )
 
