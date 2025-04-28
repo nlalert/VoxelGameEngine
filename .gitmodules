@@ -1,9 +1,9 @@
-[submodule "Vox/vendor/spdlog"]
-	path = Vox/vendor/spdlog
+[submodule "Voxera/vendor/spdlog"]
+	path = Voxera/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "Vox/vendor/GLFW"]
-	path = Vox/vendor/GLFW
+[submodule "Voxera/vendor/GLFW"]
+	path = Voxera/vendor/GLFW
 	url = https://github.com/glfw/glfw
-[submodule "Vox/vendor/imgui"]
-	path = Vox/vendor/imgui
+[submodule "Voxera/vendor/imgui"]
+	path = Voxera/vendor/imgui
 	url = https://github.com/nlalert/imgui

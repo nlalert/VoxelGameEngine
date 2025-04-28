@@ -1,6 +1,6 @@
-#include <Vox.h>
+#include <Voxera.h>
 
-class ExampleLayer : public Vox::Layer
+class ExampleLayer : public Voxera::Layer
 {
 public:
     ExampleLayer()
@@ -10,23 +10,23 @@ public:
 
     void OnUpdate() override
     {
-        VOX_INFO("ExampleLayer::Update");
+        VXR_INFO("ExampleLayer::Update");
     }
 
-    void OnEvent(Vox::Event& event) override
+    void OnEvent(Voxera::Event& event) override
     {
-        VOX_TRACE("{0}", event.ToString());
+        VXR_TRACE("{0}", event.ToString());
     }
 
 };
  
-class Sandbox : public Vox::Application
+class Sandbox : public Voxera::Application
 {
 public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Vox::ImGuiLayer());
+        PushOverlay(new Voxera::ImGuiLayer());
     }
 
     ~Sandbox()
@@ -36,7 +36,7 @@ public:
 
 };
 
-Vox::Application* Vox::CreateApplication()
+Voxera::Application* Voxera::CreateApplication()
 {
     return new Sandbox();
 }
