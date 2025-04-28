@@ -10,12 +10,15 @@ public:
 
     void OnUpdate() override
     {
-        VXR_INFO("ExampleLayer::Update");
+        if (Voxera::Input::IsKeyPressed(VXR_KEY_TAB))
+        {
+            VXR_TRACE("Tab Key is Pressed!");
+        }
     }
 
     void OnEvent(Voxera::Event& event) override
     {
-        VXR_TRACE("{0}", event.ToString());
+        // VXR_TRACE("{0}", event.ToString());
     }
 
 };

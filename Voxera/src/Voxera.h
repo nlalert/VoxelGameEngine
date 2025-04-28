@@ -6,6 +6,10 @@
 #include "Voxera/Layer.h"
 #include "Voxera/Log.h"
 
+#include "Voxera/Input.h"
+#include "Voxera/KeyCodes.h"
+#include "Voxera/MouseButtonCodes.h"
+
 #include "Voxera/ImGui/ImGuiLayer.h"
 
 // ------Entry Point----------
