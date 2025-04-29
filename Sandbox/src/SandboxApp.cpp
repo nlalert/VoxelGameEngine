@@ -1,5 +1,7 @@
 #include <Voxera.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Voxera::Layer
 {
 public:
@@ -29,7 +31,6 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Voxera::ImGuiLayer());
     }
 
     ~Sandbox()

@@ -7,6 +7,8 @@
 #include "Voxera/Events/Event.h"
 #include "Voxera/Events/ApplicationEvent.h"
 
+#include "Voxera/ImGui/ImGuiLayer.h"
+
 namespace Voxera {
 
     class VXR_API Application
@@ -29,6 +31,7 @@ namespace Voxera {
         bool OnWindowClose(WindowCloseEvent& e);
 
         std::unique_ptr<Window> m_Window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
     private:

@@ -37,9 +37,8 @@ set(SOURCES
     src/Voxera/LayerStack.cpp
     src/vxrpch.cpp  # Add precompiled header cpp file
     src/Platform/Windows/WindowsWindow.cpp  # Add Windows implementation
+    src/Voxera/ImGui/ImGuiBuild.cpp
     src/Platform/Windows/WindowsInput.cpp
-    src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp  # Add ImGui OpenGL renderer
-    src/Platform/OpenGL/ImGuiGLFWRenderer.cpp  # Add ImGui GLFW renderer
     src/Voxera/ImGui/ImGuiLayer.cpp  # Add ImGui layer
     ${GLAD_SOURCE}  # Add GLAD source
 )
@@ -56,8 +55,6 @@ set(INTERNAL_HEADERS
     src/Voxera/Window.h  # Add Window interface
     src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
     src/Platform/Windows//WindowsInput.h
-    src/Platform/OpenGL/ImGuiOpenGLRenderer.h  # Add ImGui OpenGL renderer
-    src/Platform/OpenGL/ImGuiGLFWRenderer.h  # Add ImGui GLFW renderer
     src/Voxera/ImGui/ImGuiLayer.h  # Add ImGui layer
     src/Voxera/Events/Event.h
     src/Voxera/Events/ApplicationEvent.h
@@ -97,6 +94,7 @@ target_include_directories(Voxera
         ${CMAKE_CURRENT_SOURCE_DIR}/src/Platform
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor
         ${SPDLOG_INCLUDE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include
         ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include
@@ -107,9 +105,10 @@ target_include_directories(Voxera
 
 # Link with GLFW, ImGui, and OpenGL
 target_link_libraries(Voxera 
+    PUBLIC
+        ImGui
     PRIVATE 
         glfw
-        ImGui
         ${OPENGL_LIBRARIES}
 )
 
