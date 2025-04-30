@@ -40,6 +40,7 @@ set(SOURCES
     src/Voxera/ImGui/ImGuiBuild.cpp
     src/Platform/Windows/WindowsInput.cpp
     src/Voxera/ImGui/ImGuiLayer.cpp  # Add ImGui layer
+    src/Platform/OpenGL/OpenGLContext.cpp  # Add OpenGL context implementation
     ${GLAD_SOURCE}  # Add GLAD source
 )
 
@@ -54,12 +55,14 @@ set(INTERNAL_HEADERS
     src/Voxera/LayerStack.h
     src/Voxera/Window.h  # Add Window interface
     src/Platform/Windows/WindowsWindow.h  # Add Windows implementation
-    src/Platform/Windows//WindowsInput.h
+    src/Platform/Windows/WindowsInput.h
     src/Voxera/ImGui/ImGuiLayer.h  # Add ImGui layer
     src/Voxera/Events/Event.h
     src/Voxera/Events/ApplicationEvent.h
     src/Voxera/Events/KeyEvent.h
     src/Voxera/Events/MouseEvent.h
+    src/Voxera/Renderer/GraphicsContext.h  # Add graphics context interface
+    src/Platform/OpenGL/OpenGLContext.h  # Add OpenGL context implementation
     src/vxrpch.h    # Add precompiled header file
 )
 
