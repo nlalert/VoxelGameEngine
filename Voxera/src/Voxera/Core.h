@@ -6,10 +6,14 @@
         #define VXR_PLATFORM_WINDOWS
     #endif
     
-    #ifdef VXR_BUILD_DLL
-        #define VXR_API __declspec(dllexport)
+    #if VXR_DYNAMIC_LINK
+        #ifdef VXR_BUILD_DLL
+            #define VXR_API __declspec(dllexport)
+        #else
+            #define VXR_API __declspec(dllimport)
+        #endif
     #else
-        #define VXR_API __declspec(dllimport)
+        #define VXR_API
     #endif
 #else
     #error Voxera only supports Windows!

@@ -68,8 +68,8 @@ set(PUBLIC_HEADERS
     src/Voxera.h
 )
 
-# Create the Voxera library
-add_library(Voxera SHARED ${SOURCES} ${INTERNAL_HEADERS} ${PUBLIC_HEADERS})
+# Change from SHARED to STATIC library
+add_library(Voxera STATIC ${SOURCES} ${INTERNAL_HEADERS} ${PUBLIC_HEADERS})
 
 # Add spdlog include directory
 set(SPDLOG_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include")
@@ -115,13 +115,13 @@ target_link_libraries(Voxera
 # Set specific properties for GLAD source file to not use precompiled header
 set_source_files_properties(${GLAD_SOURCE} PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 
-# Define export macro for DLL
+# Remove VXR_BUILD_DLL since it's no longer needed for a static library
 target_compile_definitions(Voxera 
     PRIVATE 
-        VXR_BUILD_DLL
         VXR_PLATFORM_WINDOWS
         VXR_DEBUG
         GLFW_INCLUDE_NONE
+        _CRT_SECURE_NO_WARNINGS  # Add this from the premake file
 )
 
 # Enable precompiled headers
