@@ -18,6 +18,11 @@ namespace Voxera {
         glfwMakeContextCurrent(m_WindowHandle);
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         VXR_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+        VXR_CORE_INFO("OpenGL Info:");
+ 		VXR_CORE_INFO("  Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+ 		VXR_CORE_INFO("  Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+ 		VXR_CORE_INFO("  Version: {0}", (const char*)glGetString(GL_VERSION));
     }
 
     void OpenGLContext::SwapBuffers()
