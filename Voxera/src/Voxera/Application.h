@@ -9,6 +9,8 @@
 
 #include "Voxera/ImGui/ImGuiLayer.h"
 
+#include "Voxera/Renderer/Shader.h"
+
 namespace Voxera {
 
     class VXR_API Application
@@ -36,6 +38,7 @@ namespace Voxera {
         LayerStack m_LayerStack;
 
         unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+        std::unique_ptr<Shader> m_Shader;
     private:
         static Application* s_Instance;
     };
