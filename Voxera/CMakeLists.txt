@@ -41,7 +41,10 @@ set(SOURCES
     src/Platform/Windows/WindowsInput.cpp
     src/Voxera/ImGui/ImGuiLayer.cpp  # Add ImGui layer
     src/Platform/OpenGL/OpenGLContext.cpp  # Add OpenGL context implementation
+    src/Platform/OpenGL/OpenGLBuffer.cpp 
     src/Voxera/Renderer/Shader.cpp
+    src/Voxera/Renderer/Buffer.cpp
+    src/Voxera/Renderer/Renderer.cpp
     ${GLAD_SOURCE}  # Add GLAD source
 )
 
@@ -64,7 +67,10 @@ set(INTERNAL_HEADERS
     src/Voxera/Events/MouseEvent.h
     src/Voxera/Renderer/GraphicsContext.h  # Add graphics context interface
     src/Voxera/Renderer/Shader.h
+    src/Voxera/Renderer/Buffer.h
+    src/Voxera/Renderer/Renderer.h
     src/Platform/OpenGL/OpenGLContext.h  # Add OpenGL context implementation
+    src/Platform/OpenGL/OpenGLBuffer.h
     src/vxrpch.h    # Add precompiled header file
 )
 
